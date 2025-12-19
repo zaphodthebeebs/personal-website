@@ -1,0 +1,584 @@
+/* ============================================
+   CYBERPUNK THEME - Matrix Inspired Design
+   ============================================ */
+
+:root {
+  /* Cyberpunk Color Palette */
+  --cyber-primary: #00ff41;         /* Matrix green */
+  --cyber-secondary: #ff006e;        /* Hot pink */
+  --cyber-accent: #00d9ff;           /* Cyan */
+  --cyber-warning: #ffbe0b;          /* Yellow */
+  --cyber-purple: #b537f2;           /* Purple */
+
+  /* Backgrounds */
+  --cyber-bg-dark: #0a0e27;          /* Deep space */
+  --cyber-bg-darker: #050816;        /* Void */
+  --cyber-bg-card: rgba(10, 14, 39, 0.8);
+  --cyber-bg-overlay: rgba(5, 8, 22, 0.95);
+
+  /* Text */
+  --cyber-text: #e0e0e0;             /* Light gray */
+  --cyber-text-dim: #a0a0a0;         /* Dim gray */
+  --cyber-text-bright: #ffffff;      /* White */
+
+  /* Effects */
+  --cyber-glow-green: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.3);
+  --cyber-glow-pink: 0 0 10px rgba(255, 0, 110, 0.5), 0 0 20px rgba(255, 0, 110, 0.3);
+  --cyber-glow-cyan: 0 0 10px rgba(0, 217, 255, 0.5), 0 0 20px rgba(0, 217, 255, 0.3);
+
+  /* Borders */
+  --cyber-border: 1px solid rgba(0, 255, 65, 0.3);
+  --cyber-border-bright: 2px solid var(--cyber-primary);
+}
+
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+
+body {
+  background: var(--cyber-bg-darker);
+  color: var(--cyber-text);
+  font-family: 'Courier New', 'Monaco', monospace;
+  overflow-x: hidden;
+}
+
+/* Animated Background Grid */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scan Line Effect */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 255, 65, 0.02) 51%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', 'Arial Black', sans-serif;
+  color: var(--cyber-primary);
+  text-shadow: var(--cyber-glow-green);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  position: relative;
+}
+
+/* Glitch Effect for H1 */
+h1.glitch {
+  position: relative;
+}
+
+h1.glitch::before,
+h1.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+h1.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--cyber-accent);
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+h1.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--cyber-secondary), 2px 2px var(--cyber-accent);
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(108px, 9999px, 35px, 0); }
+  20% { clip: rect(91px, 9999px, 128px, 0); }
+  40% { clip: rect(137px, 9999px, 40px, 0); }
+  60% { clip: rect(24px, 9999px, 105px, 0); }
+  80% { clip: rect(61px, 9999px, 149px, 0); }
+  100% { clip: rect(91px, 9999px, 18px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip: rect(69px, 9999px, 72px, 0); }
+  20% { clip: rect(116px, 9999px, 19px, 0); }
+  40% { clip: rect(105px, 9999px, 99px, 0); }
+  60% { clip: rect(9px, 9999px, 130px, 0); }
+  80% { clip: rect(132px, 9999px, 53px, 0); }
+  100% { clip: rect(104px, 9999px, 8px, 0); }
+}
+
+p {
+  color: var(--cyber-text-dim);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+a {
+  color: var(--cyber-accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--cyber-primary);
+  text-shadow: var(--cyber-glow-green);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn-cyber {
+  position: relative;
+  padding: 12px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--cyber-primary);
+  background: transparent;
+  border: var(--cyber-border-bright);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 15px) 0,
+    100% 15px,
+    100% 100%,
+    15px 100%,
+    0 calc(100% - 15px)
+  );
+}
+
+.btn-cyber::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 65, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-cyber:hover {
+  background: var(--cyber-primary);
+  color: var(--cyber-bg-darker);
+  box-shadow: var(--cyber-glow-green);
+  transform: translateY(-2px);
+}
+
+.btn-cyber:hover::before {
+  left: 100%;
+}
+
+.btn-cyber:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.cyber-card {
+  background: var(--cyber-bg-card);
+  border: var(--cyber-border);
+  border-radius: 4px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.cyber-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cyber-primary),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cyber-card:hover {
+  border-color: var(--cyber-primary);
+  box-shadow: var(--cyber-glow-green);
+  transform: translateY(-5px);
+}
+
+.cyber-card:hover::before {
+  opacity: 1;
+}
+
+/* Corner Accents */
+.cyber-card::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border-top: 2px solid var(--cyber-accent);
+  border-right: 2px solid var(--cyber-accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cyber-card:hover::after {
+  opacity: 1;
+}
+
+/* ============================================
+   SKILL BARS
+   ============================================ */
+
+.cyber-skill-bar {
+  position: relative;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 255, 65, 0.2);
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.cyber-skill-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--cyber-primary),
+    var(--cyber-accent)
+  );
+  box-shadow: var(--cyber-glow-green);
+  animation: skill-glow 2s ease-in-out infinite;
+}
+
+@keyframes skill-glow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.3); }
+}
+
+.cyber-skill-label {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cyber-text-bright);
+  font-weight: 600;
+  z-index: 2;
+  font-size: 14px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+.cyber-skill-value {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cyber-primary);
+  font-weight: 700;
+  z-index: 2;
+  text-shadow: var(--cyber-glow-green);
+}
+
+/* ============================================
+   TIMELINE (Vertical Neon Line)
+   ============================================ */
+
+.cyber-timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.cyber-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--cyber-primary),
+    var(--cyber-accent),
+    transparent
+  );
+  box-shadow: var(--cyber-glow-green);
+}
+
+.cyber-timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.cyber-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -44px;
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  background: var(--cyber-primary);
+  border: 2px solid var(--cyber-bg-dark);
+  border-radius: 50%;
+  box-shadow: var(--cyber-glow-green);
+  animation: timeline-pulse 2s ease-in-out infinite;
+}
+
+@keyframes timeline-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); box-shadow: var(--cyber-glow-green), 0 0 20px var(--cyber-primary); }
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.cyber-nav {
+  background: var(--cyber-bg-overlay);
+  border-bottom: var(--cyber-border);
+  backdrop-filter: blur(10px);
+}
+
+.cyber-nav-link {
+  position: relative;
+  padding: 10px 20px;
+  color: var(--cyber-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.cyber-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--cyber-primary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.cyber-nav-link:hover::after,
+.cyber-nav-link.active::after {
+  width: 80%;
+  box-shadow: var(--cyber-glow-green);
+}
+
+.cyber-nav-link:hover {
+  color: var(--cyber-primary);
+  text-shadow: var(--cyber-glow-green);
+}
+
+/* ============================================
+   HOLOGRAPHIC EFFECTS
+   ============================================ */
+
+.holographic {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 65, 0.1),
+    rgba(0, 217, 255, 0.1),
+    rgba(255, 0, 110, 0.1)
+  );
+  border: 1px solid rgba(0, 255, 65, 0.3);
+}
+
+.holographic::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    var(--cyber-primary),
+    var(--cyber-accent),
+    var(--cyber-secondary),
+    var(--cyber-purple)
+  );
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(10px);
+}
+
+.holographic:hover::before {
+  opacity: 0.6;
+  animation: holographic-rotate 3s linear infinite;
+}
+
+@keyframes holographic-rotate {
+  0% { filter: blur(10px) hue-rotate(0deg); }
+  100% { filter: blur(10px) hue-rotate(360deg); }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-cyber-primary {
+  color: var(--cyber-primary);
+  text-shadow: var(--cyber-glow-green);
+}
+
+.text-cyber-secondary {
+  color: var(--cyber-secondary);
+  text-shadow: var(--cyber-glow-pink);
+}
+
+.text-cyber-accent {
+  color: var(--cyber-accent);
+  text-shadow: var(--cyber-glow-cyan);
+}
+
+.bg-cyber-dark {
+  background: var(--cyber-bg-dark);
+}
+
+.bg-cyber-darker {
+  background: var(--cyber-bg-darker);
+}
+
+.border-cyber {
+  border: var(--cyber-border);
+}
+
+.glow-green {
+  box-shadow: var(--cyber-glow-green);
+}
+
+.glow-pink {
+  box-shadow: var(--cyber-glow-pink);
+}
+
+.glow-cyan {
+  box-shadow: var(--cyber-glow-cyan);
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+
+.cyber-loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(0, 255, 65, 0.2);
+  border-top-color: var(--cyber-primary);
+  border-radius: 50%;
+  animation: cyber-spin 1s linear infinite;
+  box-shadow: var(--cyber-glow-green);
+}
+
+@keyframes cyber-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px;
+  }
+
+  body::before {
+    background-size: 30px 30px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .cyber-card {
+    padding: 1.5rem;
+  }
+
+  .cyber-timeline {
+    padding-left: 30px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--cyber-primary);
+  outline-offset: 4px;
+}
