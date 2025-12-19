@@ -73,33 +73,33 @@ const services = [{
 ];
 const dataportfolio = [{
         img: "https://picsum.photos/400/800/?grayscale",
-        description: "Decentralized Identity Framework for Web3",
-        link: "#",
+        description: "DID-Web3-Protocol - Decentralized Identity Framework",
+        link: "https://github.com/zaphodthebeebs/did-web3-protocol",
     },
     {
         img: "https://picsum.photos/400/600/?grayscale",
-        description: "Quantum-resistant Blockchain Protocol",
-        link: "#",
+        description: "Quantum-ZKP-Protocol - Post-Quantum Zero-Knowledge Proofs",
+        link: "https://github.com/zaphodthebeebs/quantum-zkp-protocol",
     },
     {
         img: "https://picsum.photos/400/700/?grayscale",
-        description: "AI Ethics Model for Autonomous Systems",
-        link: "#",
+        description: "Neural-Ethics-Framework - AI Alignment & Safety Tools",
+        link: "https://github.com/zaphodthebeebs/neural-ethics-framework",
     },
     {
         img: "https://picsum.photos/400/300/?grayscale",
-        description: "Philosophical Ontology of Consciousness in AI",
-        link: "#",
+        description: "Consciousness-Ontology - Formal Model of AI Awareness",
+        link: "https://github.com/zaphodthebeebs/consciousness-ontology",
     },
     {
         img: "https://picsum.photos/400/550/?grayscale",
-        description: "Zero-Knowledge Proof Architecture",
-        link: "#",
+        description: "Homomorphic-DeFi - Private Smart Contract Engine",
+        link: "https://github.com/zaphodthebeebs/homomorphic-defi",
     },
     {
         img: "https://picsum.photos/400/400/?grayscale",
-        description: "Neural Network Meta-Analysis Framework",
-        link: "#",
+        description: "Quantum-ML-Optimizer - Hybrid Quantum Neural Networks",
+        link: "https://github.com/zaphodthebeebs/quantum-ml-optimizer",
     },
 ];
 const contactConfig = {
