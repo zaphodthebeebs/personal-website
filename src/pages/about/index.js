@@ -5,7 +5,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import {
   dataabout,
   meta,
-  worktimeline,
   skills,
   services,
 } from "../../content_option";
@@ -32,24 +31,6 @@ export const About = () => {
           <Col lg="7" className="d-flex align-items-center">
             <div>
               <p>{dataabout.aboutme}</p>
-            </div>
-          </Col>
-        </Row>
-        <Row className=" sec_sp">
-          <Col lg="5">
-            <h3 className="color_sec py-4">Work Timeline</h3>
-          </Col>
-          <Col lg="7">
-            <div className="cyber-timeline">
-              {worktimeline.map((data, i) => {
-                return (
-                  <div key={i} className="cyber-timeline-item">
-                    <h4 className="text-cyber-primary">{data.jobtitle}</h4>
-                    <p className="text-cyber-accent">{data.where}</p>
-                    <p className="text-cyber-text-dim">{data.date}</p>
-                  </div>
-                );
-              })}
             </div>
           </Col>
         </Row>

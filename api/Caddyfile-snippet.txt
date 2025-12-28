@@ -1,0 +1,29 @@
+# Add this to your existing Caddyfile for mabus.ai
+
+mabus.ai, www.mabus.ai {
+    # API proxy - must come BEFORE the main site proxy
+    handle /api/* {
+        reverse_proxy localhost:3301
+    }
+
+    # Main website
+    reverse_proxy localhost:3300
+}
+
+# Complete example of what your Caddyfile should look like:
+#
+# mabus.ai, www.mabus.ai {
+#     # API routes (port 3301)
+#     handle /api/* {
+#         reverse_proxy localhost:3301
+#     }
+#
+#     # Main website (port 3300)
+#     reverse_proxy localhost:3300
+# }
+#
+# n8n.mabus.ai {
+#     reverse_proxy localhost:5678
+# }
+#
+# ... other subdomains ...

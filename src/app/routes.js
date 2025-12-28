@@ -8,6 +8,8 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 const Home = lazy(() => import("../pages/home").then(module => ({ default: module.Home })));
 const Portfolio = lazy(() => import("../pages/portfolio").then(module => ({ default: module.Portfolio })));
 const About = lazy(() => import("../pages/about").then(module => ({ default: module.About })));
+const Blog = lazy(() => import("../pages/blog").then(module => ({ default: module.Blog })));
+const BlogPost = lazy(() => import("../pages/blog/BlogPost").then(module => ({ default: module.BlogPost })));
 
 const AnimatedRoutes = withRouter(({ location }) => (
   <TransitionGroup>
@@ -32,6 +34,8 @@ const AnimatedRoutes = withRouter(({ location }) => (
           <Route exact path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </Suspense>
