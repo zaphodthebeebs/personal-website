@@ -4,6 +4,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Container, Row, Col } from "react-bootstrap";
 import { meta } from "../../content_option";
 import { useParams, Link } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 export const BlogPost = () => {
   const { slug } = useParams();
@@ -78,9 +79,6 @@ export const BlogPost = () => {
               <div className="blog-meta">
                 <span className="blog-date">{post.date}</span>
                 <span className="blog-reading-time">{post.readingTime} min read</span>
-                {post.qualityScore && (
-                  <span className="blog-quality">Quality: {post.qualityScore}/10</span>
-                )}
               </div>
 
               <h1 className="blog-post-title glitch" data-text={post.title}>
@@ -95,7 +93,13 @@ export const BlogPost = () => {
             </div>
 
             <div className="blog-post-content">
-              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+              <div dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(post.content, {
+                  ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'a', 'code', 'pre', 'blockquote', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'img'],
+                  ALLOWED_ATTR: ['href', 'target', 'rel', 'src', 'alt', 'title', 'class'],
+                  ALLOW_DATA_ATTR: false
+                })
+              }} />
             </div>
 
             {post.sources && post.sources.length > 0 && (
@@ -110,32 +114,6 @@ export const BlogPost = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
-            )}
-
-            {post.editorNotes && (
-              <div className="blog-editor-notes">
-                <h3>Editor Notes</h3>
-                {post.editorNotes.issuesFound && post.editorNotes.issuesFound.length > 0 && (
-                  <div>
-                    <h4>Issues Found:</h4>
-                    <ul>
-                      {post.editorNotes.issuesFound.map((issue, idx) => (
-                        <li key={idx}>{issue}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {post.editorNotes.improvements && post.editorNotes.improvements.length > 0 && (
-                  <div>
-                    <h4>Improvements Made:</h4>
-                    <ul>
-                      {post.editorNotes.improvements.map((improvement, idx) => (
-                        <li key={idx}>{improvement}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
               </div>
             )}
           </Col>

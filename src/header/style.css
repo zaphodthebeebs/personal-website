@@ -6,6 +6,7 @@
 
 .menu__button {
     color: var(--text-color);
+    border-radius: 0.5rem;
 }
 
 .menu__button:focus,
@@ -33,47 +34,11 @@
     height: 50px;
     font-weight: bold;
     z-index: 1000;
+    border-radius: 0.5rem;
 }
 
 .nav_ac:hover {
     color: var(--text-color-2);
-}
-
-.br-top,
-.br-bottom,
-.br-right,
-.br-left {
-    position: fixed;
-    z-index: 999999;
-    background: var(--primary-color);
-}
-
-.br-top {
-    top: 0;
-    height: 10px;
-    left: 0;
-    width: 100%;
-}
-
-.br-bottom {
-    bottom: 0;
-    left: 0;
-    height: 10px;
-    width: 100%;
-}
-
-.br-right {
-    width: 10px;
-    right: 0;
-    top: 0;
-    height: 100%;
-}
-
-.br-left {
-    width: 10px;
-    left: 0;
-    top: 0;
-    height: 100%;
 }
 
 .cortina__wrapper-menu {

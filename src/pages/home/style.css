@@ -99,79 +99,70 @@ section {
 }
 
 .ac_btn {
-    padding: 4px 19px;
-    color: var(--secondary-color);
+    padding: 0.75rem 1.5rem;
+    color: var(--primary-color);
     position: relative;
-    border: var(--secondary-color) 2px solid;
+    border: 2px solid var(--primary-color);
+    background: transparent;
     overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+    transition: all 0.2s ease;
     cursor: pointer;
-    border-radius: 0;
+    border-radius: 0.5rem;
     margin-right: 20px;
+    font-weight: 600;
 }
 
 .ac_btn a {
     text-decoration: none;
+    color: inherit;
 }
 
 .ac_btn:hover {
-    box-shadow: 8px 8px 0px var(--text-color), -8px -8px 0px var(--text-color);
+    background: var(--primary-color);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
-.ac_btn:hover .one {
-    opacity: 1;
-    transform: translate3d(0px, 0px, 0px);
-}
-
-.ac_btn:hover .two {
-    transform: translate3d(0px, 0px, 0px);
-}
-
-.ac_btn:hover .three {
-    transform: translate3d(0px, 0px, 0px);
-}
-
+/* Remove complex ring animations */
+.ac_btn:hover .one,
+.ac_btn:hover .two,
+.ac_btn:hover .three,
 .ac_btn:hover .four {
-    transform: translate3d(0px, 0px, 0px);
+    display: none;
 }
 
 .ac_btn .ring {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: transparent;
-    top: 0;
-    left: 0;
-    transform: translate3d(0px, 90px, 0px);
+    display: none;
 }
 
-.ac_btn .one {
-    background-color: #000;
-    transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
-    z-index: -3;
-    z-index: -4;
-}
-
-.ac_btn .two {
-    background-color: var(--primary-color);
-    transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
-    z-index: -3;
-}
-
+.ac_btn .one,
+.ac_btn .two,
 .ac_btn .three {
-    background-color: var(--secondary-color);
-    z-index: -2;
-    transition: all 0.7s cubic-bezier(0.55, 0, 0.1, 1);
-    z-index: -3;
+    display: none;
 }
 
 #button_p {
-    background: var(--secondary-color);
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
+
+#button_p:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: #ffffff;
+}
+
+#button_h {
     color: var(--primary-color);
+    border-color: var(--primary-color);
+    background: transparent;
 }
 
 #button_h:hover {
-    color: var(--primary-color)
+    background: var(--primary-color);
+    color: #ffffff;
 }
 
 .intro_sec .h_bg-image .block {

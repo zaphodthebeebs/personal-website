@@ -10,6 +10,7 @@ const Portfolio = lazy(() => import("../pages/portfolio").then(module => ({ defa
 const About = lazy(() => import("../pages/about").then(module => ({ default: module.About })));
 const Blog = lazy(() => import("../pages/blog").then(module => ({ default: module.Blog })));
 const BlogPost = lazy(() => import("../pages/blog/BlogPost").then(module => ({ default: module.BlogPost })));
+const Resources = lazy(() => import("../pages/resources").then(module => ({ default: module.Resources })));
 
 const AnimatedRoutes = withRouter(({ location }) => (
   <TransitionGroup>
@@ -36,6 +37,7 @@ const AnimatedRoutes = withRouter(({ location }) => (
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/resources" element={<Resources />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </Suspense>

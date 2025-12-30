@@ -1,0 +1,5 @@
+# Rsync exclusion patterns
+# This file prevents certain files from being synced to the server
+
+# Blog posts - actual content lives on server, workspace has placeholder only
+api/data/blog-posts.json

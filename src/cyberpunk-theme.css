@@ -152,6 +152,44 @@ p {
   font-size: 1.1rem;
 }
 
+/* Override for blog content - use bright white */
+.blog-post-container p,
+.blog-post-container li,
+.blog-post-container h3,
+.blog-post-container h4,
+.blog-post-container span,
+.blog-post-container div,
+.blog-post-content p,
+.blog-post-content li,
+.blog-post-content h3,
+.blog-post-content h4,
+.po_items_ho p,
+.po_items_ho li,
+.po_items_ho span,
+.po_items_ho div,
+.blog-item p,
+.blog-item span,
+.blog-item div,
+.blog-excerpt,
+.blog-meta,
+.blog-meta span,
+.blog-date,
+.blog-reading-time,
+.blog-quality,
+.blog-sources a,
+.blog-sources li,
+.blog-editor-notes li,
+.blog-editor-notes h4 {
+  color: #ffffff !important;
+}
+
+.blog-post-container h2,
+.blog-post-content h2,
+.blog-title,
+.blog-post-title {
+  color: var(--cyber-primary) !important;
+}
+
 a {
   color: var(--cyber-accent);
   text-decoration: none;
