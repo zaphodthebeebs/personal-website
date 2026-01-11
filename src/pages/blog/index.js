@@ -24,8 +24,8 @@ export const Blog = () => {
       }
 
       const data = await response.json();
-      // Reverse to show latest posts first
-      setPosts((data.posts || []).reverse());
+      // Backend already sorts newest-first
+      setPosts(data.posts || []);
       setError(null);
     } catch (err) {
       console.error('Error fetching blog posts:', err);
